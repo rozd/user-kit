@@ -23,14 +23,22 @@ let package = Package(
                 .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
             ],
             swiftSettings: [
+                // Match the consumer app's "Approachable Concurrency" dialect so
+                // async-closure isolation lines up across the package boundary
+                // (else protocol conformances mismatch: nonisolated(nonsending) vs @concurrent).
                 .defaultIsolation(MainActor.self),
+                .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
             ]
         ),
         .testTarget(
             name: "UserKitTests",
             dependencies: ["UserKit"],
             swiftSettings: [
+                // Match the consumer app's "Approachable Concurrency" dialect so
+                // async-closure isolation lines up across the package boundary
+                // (else protocol conformances mismatch: nonisolated(nonsending) vs @concurrent).
                 .defaultIsolation(MainActor.self),
+                .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
             ]
         ),
     ]
