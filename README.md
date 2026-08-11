@@ -7,6 +7,7 @@ UserKit gives your app one observable `User` you inject once and read anywhere. 
 - 🧩 **Provider-neutral** — the core knows nothing about Firebase, Auth0, or your backend. Swap providers without touching your app code.
 - 👀 **SwiftUI-native** — `User` is `@Observable`; views update automatically on sign-in, sign-out, and token refresh.
 - 🪶 **Tiny** — one dependency ([swift-async-algorithms](https://github.com/apple/swift-async-algorithms)). No SDK bloat dragged into your app.
+- 🤖 **Android-ready** — pure cross-platform Swift: works in [Skip](https://skip.dev) Fuse apps and compiles with the [Swift SDK for Android](https://www.swift.org/android/) as-is.
 
 ```swift
 @Environment(User.self) private var user
@@ -112,6 +113,7 @@ Then the app builds `User(service:storage:synchronizer:)`. See [`user-kit-fireba
 
 - Swift **6.2+**, iOS **18+**, macOS **15+**
 - UserKit is built with *Approachable Concurrency* (`MainActor` default isolation + `NonisolatedNonsendingByDefault`). Enable the same on your app target so isolation lines up across the package boundary.
+- **Android / Skip:** UserKit is a plain cross-platform Swift package — [Skip](https://skip.dev) Fuse (native) apps can depend on it directly, with no Skip-specific setup on either side, and CI verifies the test suite on an Android emulator. Skip's transpiled (Lite) mode is not supported.
 
 ## License
 
