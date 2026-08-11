@@ -1,4 +1,6 @@
 import Foundation
+// Foundation re-exports Observation only on Darwin; Android needs the explicit import.
+import Observation
 
 nonisolated public struct UserId: LosslessStringConvertible, Sendable, Codable, Equatable, Hashable {
     public let description: String
